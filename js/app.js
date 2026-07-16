@@ -20,10 +20,19 @@ function formatSummary(text, maxLength = 120) {
         return "";
     }
 
-    const firstLine = text.split(/\r?\n/)[0].trim();
-    return firstLine.length <= maxLength
-        ? firstLine
-        : `${firstLine.slice(0, maxLength).trim()}…`;
+    return text
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(line => line.startsWith("-"))
+        .map(line => {
+            const withoutBullet = line.replace(/^-+\s*/, "");
+            const colonIndex = withoutBullet.indexOf(":");
+
+            return colonIndex >= 0
+                ? withoutBullet.slice(0, colonIndex).trim()
+                : withoutBullet.trim();
+        })
+        .join("\n");
 }
 
 async function loadCandidates() {
