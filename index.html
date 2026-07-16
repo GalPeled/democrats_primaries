@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/stlye.css">
 </head>
 <body>
-
 <header>
     <h1>המועמדים לבחירות המקדימות</h1>
 
@@ -17,6 +16,26 @@
         id="searchBox"
         placeholder="חפש מועמד..."
     >
+    <div id="stats"></div>
+<select id="filterStatus">
+
+    <option value="all">
+        כל המועמדים
+    </option>
+
+    <option value="like">
+        👍 תומך
+    </option>
+
+    <option value="maybe">
+        🤔 לא החלטתי
+    </option>
+
+    <option value="dislike">
+        👎 נפסל
+    </option>
+
+</select>
 </header>
 
 <main>
@@ -37,34 +56,39 @@
 
         <div class="candidate-details">
 
-            <section>
-                <h3>ערכים מובילים</h3>
-                <p id="modalValues"></p>
+            <section class="accordion-section">
+                <h3 class="accordion-title">ערכים מובילים
+                    <span>▼</span>
+                </h3>
+                <p id="modalValues" class="accordion-content"></p>
             </section>
 
-            <section>
-                <h3>מה אומר שיעשה חבר כנסת</h3>
-                <p id="modalPromises"></p>
+            <section class="accordion-section">
+                <h3 class="accordion-title" >מה אומר שיעשה חבר כנסת
+                    <span>▼</span>
+                </h3>
+                <p id="modalPromises" class="accordion-content"></p>
             </section>
 
-            <section>
-                <h3>הישגים ונקודות גאווה</h3>
-                <p id="modalAchievements"></p>
+            <section class="accordion-section">
+                <h3 class="accordion-title">הישגים ונקודות גאווה
+                    <span>▼</span>
+                </h3>
+                <p id="modalAchievements" class="accordion-content"></p>
             </section>
 
-            <section>
-                <h3>ביקורת ודעת האופוזיציה</h3>
-                <p id="modalCriticism"></p>
+            <section class="accordion-section">
+                <h3 class="accordion-title">ביקורת ודעת האופוזיציה
+                    <span>▼</span>
+                </h3>
+                <p id="modalCriticism" class="accordion-content"></p>
             </section>
 
-            <section>
-                <h3>אקטיבי ברשת</h3>
-                <p id="modalSocial"></p>
-            </section>
-
-            <section>
-                <h3>ערוץ 14</h3>
-                <p id="modalChannel"></p>
+            <section class="accordion-section">
+                <h3 class="accordion-title">מכונת הרעל
+                    <span>▼</span>
+                </h3>
+                <p id="modalChannel" class="accordion-content"></p>
             </section>
 
         </div>
