@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "John Smith",
+    "state": "California",
+    "age": 52,
+    "role": "Governor",
+    "description": "Former governor focused on healthcare reform.",
+    "positions": [
+      "Universal Healthcare",
+      "Climate Action",
+      "Education Funding"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Jane Doe",
+    "state": "Texas",
+    "age": 44,
+    "role": "Senator",
+    "description": "Advocates labor rights and immigration reform.",
+    "positions": [
+      "Labor Rights",
+      "Immigration Reform",
+      "Affordable Housing"
+    ]
+  }
+]
