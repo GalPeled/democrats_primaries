@@ -6,42 +6,6 @@ const searchBox = document.getElementById("searchBox");
 const modal = document.getElementById("candidateModal");
 const closeModal = document.getElementById("closeModal");
 
-const fieldMap = {
-    "שם המועמד/ת": "name",
-    "ערכים מובילים": "values",
-    "מה אומר שיעשה חבר כנסת": "promises",
-    "הישגים ונקודות גאווה": "achievements",
-    "ביקורת ודעת האופוזיציה": "criticism",
-    "אקטיבי ברשת": "social",
-    "ערוץ 14": "channel"
-};
-
-function normalizeCandidate(rawCandidate) {
-    const candidate = {};
-
-    Object.entries(rawCandidate).forEach(([rawKey, value]) => {
-        const normalizedKey = rawKey.trim();
-        const mappedKey = fieldMap[normalizedKey];
-
-        if (mappedKey) {
-            candidate[mappedKey] = typeof value === "string"
-                ? value.trim()
-                : value;
-        } else {
-            candidate[normalizedKey] = value;
-        }
-    });
-
-    candidate.name = candidate.name || "מועמד/ת לא מזוהה";
-    candidate.values = candidate.values || "";
-    candidate.promises = candidate.promises || "";
-    candidate.achievements = candidate.achievements || "";
-    candidate.criticism = candidate.criticism || "";
-    candidate.social = candidate.social || "";
-    candidate.channel = candidate.channel || "";
-
-    return candidate;
-}
 
 function formatText(text) {
     return text
@@ -64,9 +28,8 @@ function formatSummary(text, maxLength = 120) {
 
 async function loadCandidates() {
     const response = await fetch("data/candidates.json");
-    const rawCandidates = await response.json();
+    const candidates = await response.json();
 
-    candidates = rawCandidates.map(normalizeCandidate);
     renderCandidates(candidates);
 }
 
@@ -78,7 +41,7 @@ function renderCandidates(list) {
         card.className = "candidate-card";
 
         card.innerHTML = `
-            <h3>${candidate.name}</h3>
+            <h3>${candidate.Name}</h3>
             <p>${formatSummary(candidate.values)}</p>
         `;
 
@@ -91,13 +54,12 @@ function renderCandidates(list) {
 }
 
 function openCandidate(candidate) {
-    document.getElementById("modalName").textContent = candidate.name;
+    document.getElementById("modalName").textContent = candidate.Name;
     document.getElementById("modalValues").innerHTML = formatText(candidate.values);
-    document.getElementById("modalPromises").innerHTML = formatText(candidate.promises);
-    document.getElementById("modalAchievements").innerHTML = formatText(candidate.achievements);
-    document.getElementById("modalCriticism").innerHTML = formatText(candidate.criticism);
-    document.getElementById("modalSocial").textContent = candidate.social;
-    document.getElementById("modalChannel").textContent = candidate.channel;
+    document.getElementById("modalPromises").innerHTML = formatText(candidate.doing);
+    document.getElementById("modalAchievements").innerHTML = formatText(candidate.acivment);
+    document.getElementById("modalCriticism").innerHTML = formatText(candidate.review);
+    document.getElementById("modalChannel").textContent = candidate.poisen;
     modal.classList.remove("hidden");
 }
 
