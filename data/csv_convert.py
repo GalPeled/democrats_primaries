@@ -13,4 +13,4 @@ with open(csv_file_path, mode='r', encoding='utf-8') as csv_file:
 
 with open(json_file_path, mode='w', encoding='utf-8') as json_file:
     # indent=4 makes the JSON file human-readable (pretty-printed)
-    json.dump(data, json_file, indent=4)
+    json.dump(data, json_file, indent=4, ensure_ascii=False)
